@@ -1,0 +1,953 @@
+{
+ "dataset_id": "sentinel-4f2d39e4323dd482",
+ "version": "1.0.0",
+ "seed": 20261010,
+ "schema": "sentinel_demo",
+ "label_snapshot": "2026-05-01T00:00:00+05:30",
+ "fraud_rate": 0.006,
+ "counts": {
+  "transactions": 100000,
+  "warmup": 10000,
+  "customers": 2500,
+  "merchants": 200,
+  "investigator_notes": 2584,
+  "chargeback_narratives": 1167,
+  "playbooks": 600,
+  "regulatory_exercises": 900,
+  "gold": 8000,
+  "dpo": 5000,
+  "evaluation": 500,
+  "legacy_cases": 200
+ },
+ "tables": [
+  {
+   "path": "tables/customers/all/part-00001.csv.gz",
+   "rows": 2500,
+   "table": "customers",
+   "split": "all"
+  },
+  {
+   "path": "tables/merchants/all/part-00001.csv.gz",
+   "rows": 200,
+   "table": "merchants",
+   "split": "all"
+  },
+  {
+   "path": "tables/devices/all/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "devices",
+   "split": "all"
+  },
+  {
+   "path": "tables/devices/all/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "devices",
+   "split": "all"
+  },
+  {
+   "path": "tables/devices/all/part-00003.csv.gz",
+   "rows": 120,
+   "table": "devices",
+   "split": "all"
+  },
+  {
+   "path": "tables/transactions/warmup/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "warmup"
+  },
+  {
+   "path": "tables/transactions/warmup/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "warmup"
+  },
+  {
+   "path": "tables/transactions/train/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "train"
+  },
+  {
+   "path": "tables/transactions/train/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "train"
+  },
+  {
+   "path": "tables/transactions/train/part-00003.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "train"
+  },
+  {
+   "path": "tables/transactions/train/part-00004.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "train"
+  },
+  {
+   "path": "tables/transactions/train/part-00005.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "train"
+  },
+  {
+   "path": "tables/transactions/train/part-00006.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "train"
+  },
+  {
+   "path": "tables/transactions/train/part-00007.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "train"
+  },
+  {
+   "path": "tables/transactions/train/part-00008.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "train"
+  },
+  {
+   "path": "tables/transactions/train/part-00009.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "train"
+  },
+  {
+   "path": "tables/transactions/train/part-00010.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "train"
+  },
+  {
+   "path": "tables/transactions/train/part-00011.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "train"
+  },
+  {
+   "path": "tables/transactions/train/part-00012.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "train"
+  },
+  {
+   "path": "tables/transactions/train/part-00013.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "train"
+  },
+  {
+   "path": "tables/transactions/train/part-00014.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "train"
+  },
+  {
+   "path": "tables/transactions/train/part-00015.csv.gz",
+   "rows": 2050,
+   "table": "transactions",
+   "split": "train"
+  },
+  {
+   "path": "tables/transactions/validation/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "validation"
+  },
+  {
+   "path": "tables/transactions/validation/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "validation"
+  },
+  {
+   "path": "tables/transactions/validation/part-00003.csv.gz",
+   "rows": 4061,
+   "table": "transactions",
+   "split": "validation"
+  },
+  {
+   "path": "tables/transactions/holdout/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "holdout"
+  },
+  {
+   "path": "tables/transactions/holdout/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "transactions",
+   "split": "holdout"
+  },
+  {
+   "path": "tables/transactions/holdout/part-00003.csv.gz",
+   "rows": 3889,
+   "table": "transactions",
+   "split": "holdout"
+  },
+  {
+   "path": "tables/payment_outcomes/warmup/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "warmup"
+  },
+  {
+   "path": "tables/payment_outcomes/warmup/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "warmup"
+  },
+  {
+   "path": "tables/payment_outcomes/train/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "train"
+  },
+  {
+   "path": "tables/payment_outcomes/train/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "train"
+  },
+  {
+   "path": "tables/payment_outcomes/train/part-00003.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "train"
+  },
+  {
+   "path": "tables/payment_outcomes/train/part-00004.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "train"
+  },
+  {
+   "path": "tables/payment_outcomes/train/part-00005.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "train"
+  },
+  {
+   "path": "tables/payment_outcomes/train/part-00006.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "train"
+  },
+  {
+   "path": "tables/payment_outcomes/train/part-00007.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "train"
+  },
+  {
+   "path": "tables/payment_outcomes/train/part-00008.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "train"
+  },
+  {
+   "path": "tables/payment_outcomes/train/part-00009.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "train"
+  },
+  {
+   "path": "tables/payment_outcomes/train/part-00010.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "train"
+  },
+  {
+   "path": "tables/payment_outcomes/train/part-00011.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "train"
+  },
+  {
+   "path": "tables/payment_outcomes/train/part-00012.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "train"
+  },
+  {
+   "path": "tables/payment_outcomes/train/part-00013.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "train"
+  },
+  {
+   "path": "tables/payment_outcomes/train/part-00014.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "train"
+  },
+  {
+   "path": "tables/payment_outcomes/train/part-00015.csv.gz",
+   "rows": 2050,
+   "table": "payment_outcomes",
+   "split": "train"
+  },
+  {
+   "path": "tables/payment_outcomes/validation/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "validation"
+  },
+  {
+   "path": "tables/payment_outcomes/validation/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "validation"
+  },
+  {
+   "path": "tables/payment_outcomes/validation/part-00003.csv.gz",
+   "rows": 4061,
+   "table": "payment_outcomes",
+   "split": "validation"
+  },
+  {
+   "path": "tables/payment_outcomes/holdout/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "holdout"
+  },
+  {
+   "path": "tables/payment_outcomes/holdout/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "payment_outcomes",
+   "split": "holdout"
+  },
+  {
+   "path": "tables/payment_outcomes/holdout/part-00003.csv.gz",
+   "rows": 3889,
+   "table": "payment_outcomes",
+   "split": "holdout"
+  },
+  {
+   "path": "tables/labels/warmup/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "warmup"
+  },
+  {
+   "path": "tables/labels/warmup/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "warmup"
+  },
+  {
+   "path": "tables/labels/train/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "train"
+  },
+  {
+   "path": "tables/labels/train/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "train"
+  },
+  {
+   "path": "tables/labels/train/part-00003.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "train"
+  },
+  {
+   "path": "tables/labels/train/part-00004.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "train"
+  },
+  {
+   "path": "tables/labels/train/part-00005.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "train"
+  },
+  {
+   "path": "tables/labels/train/part-00006.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "train"
+  },
+  {
+   "path": "tables/labels/train/part-00007.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "train"
+  },
+  {
+   "path": "tables/labels/train/part-00008.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "train"
+  },
+  {
+   "path": "tables/labels/train/part-00009.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "train"
+  },
+  {
+   "path": "tables/labels/train/part-00010.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "train"
+  },
+  {
+   "path": "tables/labels/train/part-00011.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "train"
+  },
+  {
+   "path": "tables/labels/train/part-00012.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "train"
+  },
+  {
+   "path": "tables/labels/train/part-00013.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "train"
+  },
+  {
+   "path": "tables/labels/train/part-00014.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "train"
+  },
+  {
+   "path": "tables/labels/train/part-00015.csv.gz",
+   "rows": 2050,
+   "table": "labels",
+   "split": "train"
+  },
+  {
+   "path": "tables/labels/validation/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "validation"
+  },
+  {
+   "path": "tables/labels/validation/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "validation"
+  },
+  {
+   "path": "tables/labels/validation/part-00003.csv.gz",
+   "rows": 4061,
+   "table": "labels",
+   "split": "validation"
+  },
+  {
+   "path": "tables/labels/holdout/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "holdout"
+  },
+  {
+   "path": "tables/labels/holdout/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "labels",
+   "split": "holdout"
+  },
+  {
+   "path": "tables/labels/holdout/part-00003.csv.gz",
+   "rows": 3889,
+   "table": "labels",
+   "split": "holdout"
+  },
+  {
+   "path": "tables/features/warmup/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "warmup"
+  },
+  {
+   "path": "tables/features/warmup/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "warmup"
+  },
+  {
+   "path": "tables/features/train/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "train"
+  },
+  {
+   "path": "tables/features/train/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "train"
+  },
+  {
+   "path": "tables/features/train/part-00003.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "train"
+  },
+  {
+   "path": "tables/features/train/part-00004.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "train"
+  },
+  {
+   "path": "tables/features/train/part-00005.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "train"
+  },
+  {
+   "path": "tables/features/train/part-00006.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "train"
+  },
+  {
+   "path": "tables/features/train/part-00007.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "train"
+  },
+  {
+   "path": "tables/features/train/part-00008.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "train"
+  },
+  {
+   "path": "tables/features/train/part-00009.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "train"
+  },
+  {
+   "path": "tables/features/train/part-00010.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "train"
+  },
+  {
+   "path": "tables/features/train/part-00011.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "train"
+  },
+  {
+   "path": "tables/features/train/part-00012.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "train"
+  },
+  {
+   "path": "tables/features/train/part-00013.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "train"
+  },
+  {
+   "path": "tables/features/train/part-00014.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "train"
+  },
+  {
+   "path": "tables/features/train/part-00015.csv.gz",
+   "rows": 2050,
+   "table": "features",
+   "split": "train"
+  },
+  {
+   "path": "tables/features/validation/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "validation"
+  },
+  {
+   "path": "tables/features/validation/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "validation"
+  },
+  {
+   "path": "tables/features/validation/part-00003.csv.gz",
+   "rows": 4061,
+   "table": "features",
+   "split": "validation"
+  },
+  {
+   "path": "tables/features/holdout/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "holdout"
+  },
+  {
+   "path": "tables/features/holdout/part-00002.csv.gz",
+   "rows": 5000,
+   "table": "features",
+   "split": "holdout"
+  },
+  {
+   "path": "tables/features/holdout/part-00003.csv.gz",
+   "rows": 3889,
+   "table": "features",
+   "split": "holdout"
+  },
+  {
+   "path": "tables/legacy_cases/all/part-00001.csv.gz",
+   "rows": 200,
+   "table": "legacy_cases",
+   "split": "all"
+  },
+  {
+   "path": "tables/documents/train/part-00001.csv.gz",
+   "rows": 3267,
+   "table": "documents",
+   "split": "train"
+  },
+  {
+   "path": "tables/documents/train/part-00002.csv.gz",
+   "rows": 1215,
+   "table": "documents",
+   "split": "train"
+  },
+  {
+   "path": "tables/documents/validation/part-00001.csv.gz",
+   "rows": 399,
+   "table": "documents",
+   "split": "validation"
+  },
+  {
+   "path": "tables/documents/holdout/part-00001.csv.gz",
+   "rows": 375,
+   "table": "documents",
+   "split": "holdout"
+  },
+  {
+   "path": "tables/gold_explanations/train/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "gold_explanations",
+   "split": "train"
+  },
+  {
+   "path": "tables/gold_explanations/train/part-00002.csv.gz",
+   "rows": 3000,
+   "table": "gold_explanations",
+   "split": "train"
+  },
+  {
+   "path": "tables/gold_explanations/holdout/part-00001.csv.gz",
+   "rows": 500,
+   "table": "gold_explanations",
+   "split": "holdout"
+  },
+  {
+   "path": "tables/preference_pairs/train/part-00001.csv.gz",
+   "rows": 5000,
+   "table": "preference_pairs",
+   "split": "train"
+  },
+  {
+   "path": "tables/threshold_sets/all/part-00001.csv.gz",
+   "rows": 1,
+   "table": "threshold_sets",
+   "split": "all"
+  },
+  {
+   "path": "tables/hard_rules/all/part-00001.csv.gz",
+   "rows": 2,
+   "table": "hard_rules",
+   "split": "all"
+  },
+  {
+   "path": "tables/list_entries/all/part-00001.csv.gz",
+   "rows": 24,
+   "table": "list_entries",
+   "split": "all"
+  }
+ ],
+ "files": [
+  {
+   "path": "corpus/chargeback_narratives/holdout/part-00001.jsonl.gz",
+   "bytes": 24266,
+   "sha256": "051b2dea209f8a4d309d824e1a63e1b5ea7ce029ea7180e033e1fd1af9648977",
+   "bucket_group": "evaluation"
+  },
+  {
+   "path": "corpus/chargeback_narratives/train/part-00001.jsonl.gz",
+   "bytes": 170259,
+   "sha256": "75bc20f433aa57cd9094081f20b7b77d09c672ba33e1c54c646de891beaff74a",
+   "bucket_group": "data"
+  },
+  {
+   "path": "corpus/chargeback_narratives/validation/part-00001.jsonl.gz",
+   "bytes": 24962,
+   "sha256": "931f2824fa1cb8bf020496aa2c65bdef48d9688862d60ed0f230fa270014026e",
+   "bucket_group": "data"
+  },
+  {
+   "path": "corpus/guidelines/train/part-00001.jsonl.gz",
+   "bytes": 1811,
+   "sha256": "b7517a79f736df8fb22ace54547ef4610d6bf04dcb5a752efac5fb04ce3c4496",
+   "bucket_group": "data"
+  },
+  {
+   "path": "corpus/investigator_notes/holdout/part-00001.jsonl.gz",
+   "bytes": 48613,
+   "sha256": "f2fe3f172fcd376a1be31ccce4c4d4c5ffff6f7631bc9388d49bf1007be821cb",
+   "bucket_group": "evaluation"
+  },
+  {
+   "path": "corpus/investigator_notes/train/part-00001.jsonl.gz",
+   "bytes": 370144,
+   "sha256": "44109ad62065222797428dd6b099fe7b64dda88d70251c647f64a3d821f32c91",
+   "bucket_group": "data"
+  },
+  {
+   "path": "corpus/investigator_notes/validation/part-00001.jsonl.gz",
+   "bytes": 53678,
+   "sha256": "75b8cc6f2d9479ed07cea187c6e3d7dbd07cac9babbbd69b4a6953877641db46",
+   "bucket_group": "data"
+  },
+  {
+   "path": "corpus/playbooks/train/part-00001.jsonl.gz",
+   "bytes": 133698,
+   "sha256": "135023924e1272d0fb38d9df430cb72499bfe0a6740a8114e9aee058c7026cff",
+   "bucket_group": "data"
+  },
+  {
+   "path": "corpus/rba_guides/train/part-00001.jsonl.gz",
+   "bytes": 806,
+   "sha256": "bb0e25377f8e7703d0049028babfba73f0897cb17b6cab1ec46f4d536da7740b",
+   "bucket_group": "data"
+  },
+  {
+   "path": "corpus/regulatory_exercises/train/part-00001.jsonl.gz",
+   "bytes": 214148,
+   "sha256": "77d88bf28823eb21ffee869afae7f5943dbc4c00ece6c130e59e0c7d2296335c",
+   "bucket_group": "data"
+  },
+  {
+   "path": "evaluation/explanations/holdout/part-00001.jsonl.gz",
+   "bytes": 81526,
+   "sha256": "a4e334bd37e07f6255a70c83c531fc46bfa0a1ca16971f8fff85b75dd70d7f07",
+   "bucket_group": "evaluation"
+  },
+  {
+   "path": "parquet/transactions/holdout/part-00001.parquet",
+   "bytes": 537768,
+   "sha256": "83235c8b1f5b38cb1ade2736cd9627e2143f563ed5c991efcd18b2f9b1f5b9b3",
+   "bucket_group": "evaluation"
+  },
+  {
+   "path": "parquet/transactions/train/part-00001.parquet",
+   "bytes": 934083,
+   "sha256": "20b712a707de8b279f9f7645972ade6536447279d2189773e1db84b9068f387a",
+   "bucket_group": "data"
+  },
+  {
+   "path": "parquet/transactions/train/part-00002.parquet",
+   "bytes": 935632,
+   "sha256": "2b4581f75f3c33040af01e951dd97ad92776552d1ff98cecf65a1199742f28cc",
+   "bucket_group": "data"
+  },
+  {
+   "path": "parquet/transactions/train/part-00003.parquet",
+   "bytes": 833053,
+   "sha256": "6fd3f44f5ab2ee4462dc2720ed728467b305e2e358a4d535fb315c67e0fdf1bd",
+   "bucket_group": "data"
+  },
+  {
+   "path": "parquet/transactions/validation/part-00001.parquet",
+   "bytes": 543927,
+   "sha256": "5c656fe7d8c5ddc35a5fb2b133890425a6ce40bdff6a087a6741c87d954947e4",
+   "bucket_group": "data"
+  },
+  {
+   "path": "parquet/transactions/warmup/part-00001.parquet",
+   "bytes": 382436,
+   "sha256": "f3bb9611b31a115c6ecc0733af10cf6bd581eb8f38456c4f8516e10737e38d58",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/cpt/train/part-00001.jsonl.gz",
+   "bytes": 433027,
+   "sha256": "5d372dc7babeaad290f20d02a4777cc6ab120ae3e42fc32e0327d86016c261a6",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/dpo/train/part-00001.jsonl.gz",
+   "bytes": 814133,
+   "sha256": "e1f78101600c305676f72d2ccaccb604580bfcf68e002380a4e84a4f6104cb8e",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/format_comparison/train/part-00001.jsonl.gz",
+   "bytes": 208179,
+   "sha256": "0bc4524688bc4fe855ff75efabe2cded85733be7d3b5fef27bf3054cfa7d35a8",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/gold/train/part-00001.jsonl.gz",
+   "bytes": 730619,
+   "sha256": "ea7554710b71aee79b713ce6908eb7974963b4601e20d7dd908d6a921a53113b",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/gold/train/part-00002.jsonl.gz",
+   "bytes": 456779,
+   "sha256": "b2a541dedd966f4ee9dc471ab1e49a5646c4a9ff3d0bfa86b4097129da669fa0",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/holdout/part-00001.jsonl.gz",
+   "bytes": 655554,
+   "sha256": "4ac14b68f5e321be2686c68d9842735bdadcf6a26cbdba4eae6f3209b4603a4d",
+   "bucket_group": "evaluation"
+  },
+  {
+   "path": "training/sft/holdout/part-00002.jsonl.gz",
+   "bytes": 651082,
+   "sha256": "beca9ac9c39df123577702ab19dd1b280d76126fda633764b86f93cdddaffa9f",
+   "bucket_group": "evaluation"
+  },
+  {
+   "path": "training/sft/holdout/part-00003.jsonl.gz",
+   "bytes": 510327,
+   "sha256": "11eb84bea99197ec281031b9f22f4c7e9d6ca00be0e23a5856162d32eef1dd16",
+   "bucket_group": "evaluation"
+  },
+  {
+   "path": "training/sft/train/part-00001.jsonl.gz",
+   "bytes": 604922,
+   "sha256": "eabe7a6825db15457f7125bee3e00b4b9f033739233fad306b962da0897a63e5",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/train/part-00002.jsonl.gz",
+   "bytes": 635270,
+   "sha256": "292b28cc1e06be2c7c6e90e7011632ee2331f90018ef35f92da285c946b29d91",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/train/part-00003.jsonl.gz",
+   "bytes": 665740,
+   "sha256": "f0f8b3ce274d7dbb4e4f79076b0d8d4fb9f98c5d3e1e4b26bb6929abcfc4d7ae",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/train/part-00004.jsonl.gz",
+   "bytes": 697662,
+   "sha256": "eb46491ae716b1e5ff0f5a620d6cff3fe86cd6f88578684d61118c4aa388001a",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/train/part-00005.jsonl.gz",
+   "bytes": 713569,
+   "sha256": "3a6cdd922f8546dbe275e15d117ca08304564a91cda0dc4d03f4cbbda34d2062",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/train/part-00006.jsonl.gz",
+   "bytes": 719809,
+   "sha256": "25c0c55f026816e2b105faa4c7797d8db6e0d68045ab8352396ada17bfe393c7",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/train/part-00007.jsonl.gz",
+   "bytes": 716152,
+   "sha256": "fa9c6a99b494f64783f758d3015485d42119c9ee4f0c9b6c12cdbc48fc99d124",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/train/part-00008.jsonl.gz",
+   "bytes": 710500,
+   "sha256": "719d4424d27f98e4e0206c137b7a325a58417fca29420820767629c254cbe0e4",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/train/part-00009.jsonl.gz",
+   "bytes": 705397,
+   "sha256": "5739ca12fb75d862cc80b6d1e2ff9f6b7bde933fcdbe198488cebebbad01d1bb",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/train/part-00010.jsonl.gz",
+   "bytes": 704293,
+   "sha256": "804d427b09ed5ab37ef9ae9d04ab96739323c06e3f0c740d841b50db048ed532",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/train/part-00011.jsonl.gz",
+   "bytes": 701249,
+   "sha256": "a00268373f5d682efb54fcdec3aa742c1341307fc23288a97ecbe767f5af42f5",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/train/part-00012.jsonl.gz",
+   "bytes": 688295,
+   "sha256": "c79b01c2c47d47ab25ab8a7e244efa1e358e40a8cb8a393e698dbc410acc84d0",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/train/part-00013.jsonl.gz",
+   "bytes": 666963,
+   "sha256": "2f0f929580157130176f7d0ef13f300be205accfe64888d8ba660d208fc61743",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/train/part-00014.jsonl.gz",
+   "bytes": 669451,
+   "sha256": "ae31c939e1e329fe225994e938b005bbe55a45c1d669ab3192d6a7bf910db821",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/train/part-00015.jsonl.gz",
+   "bytes": 280513,
+   "sha256": "61720e91538eb35b3f2449e988fc126a71081b3526350c6e7e3f7674b4b38830",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/validation/part-00001.jsonl.gz",
+   "bytes": 672954,
+   "sha256": "91670fd6903e1892b2c069571f55d755f88e4b9af6dcd5bf346757c0455ccd42",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/validation/part-00002.jsonl.gz",
+   "bytes": 664327,
+   "sha256": "6c0b693673dd33a8ef879964c4ad2d959ba23d6b85a4bc8526a35aa176a1f3da",
+   "bucket_group": "data"
+  },
+  {
+   "path": "training/sft/validation/part-00003.jsonl.gz",
+   "bytes": 539119,
+   "sha256": "ff5ad6b51d7ee435f846b3f27fbba9d25accbc4c03b47c6271aa8c5efaab25ae",
+   "bucket_group": "data"
+  }
+ ],
+ "tokenizer_sha256": null,
+ "split_intervals_ist": {
+  "train": [
+   "2025-01-01T00:00:00+05:30",
+   "2025-11-01T00:00:00+05:30"
+  ],
+  "validation": [
+   "2025-11-01T00:00:00+05:30",
+   "2026-01-01T00:00:00+05:30"
+  ],
+  "holdout": [
+   "2026-01-01T00:00:00+05:30",
+   "2026-03-01T00:00:00+05:30"
+  ]
+ }
+}

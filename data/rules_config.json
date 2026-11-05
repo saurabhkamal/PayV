@@ -1,0 +1,39 @@
+{
+  "version": "synthetic-rules-1",
+  "thresholds": {
+    "medium": 0.3,
+    "review": 0.6,
+    "block": 0.85
+  },
+  "blocked_devices": [
+    "D_0d5902c97e7290f4",
+    "D_1afb2b39a0fa0091",
+    "D_1fda85b6e0cb1b6e",
+    "D_53bb17390914857b",
+    "D_69765fb97e3c7b52",
+    "D_ac17d1f10ed3ab06",
+    "D_b3e1bc427ad0ef00",
+    "D_bc4666e13344fe82",
+    "D_ca69cda6a0165d00",
+    "D_e0751825cf7de4f5",
+    "D_f01e430eda50fdc2",
+    "D_fd8b0f414ced6d12"
+  ],
+  "allowlisted_customers": [
+    "C_13b883e74fbae989",
+    "C_2c2df4a5855f4449",
+    "C_37048b52cb878832",
+    "C_44281caf11718ec6",
+    "C_5472c382bdadfa60",
+    "C_5d8a84299422b8f1",
+    "C_769cfd54126903f1",
+    "C_874f41da4228ee57",
+    "C_95a88847b98f088d",
+    "C_9fe3d96daf46b2ce",
+    "C_b839a42d5c7a28da",
+    "C_ef13d0be3f91f70c"
+  ],
+  "effective_from": "2024-12-31T18:30:00.000+00:00",
+  "hard_block_precedes_allowlist": true,
+  "scores_are_calibrated": false
+}

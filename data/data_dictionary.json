@@ -1,0 +1,857 @@
+{
+  "customers": {
+    "columns": [
+      {
+        "name": "customer_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "created_at",
+        "postgres_definition": "timestamptz NOT NULL"
+      },
+      {
+        "name": "customer_age",
+        "postgres_definition": "integer NOT NULL"
+      },
+      {
+        "name": "home_city",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "region",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": []
+  },
+  "merchants": {
+    "columns": [
+      {
+        "name": "merchant_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "synthetic_name",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "merchant_category",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "merchant_location",
+        "postgres_definition": "jsonb NOT NULL"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": []
+  },
+  "devices": {
+    "columns": [
+      {
+        "name": "device_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "device_kind",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": []
+  },
+  "transactions": {
+    "columns": [
+      {
+        "name": "transaction_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "customer_id",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "merchant_id",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "device_id",
+        "postgres_definition": "text"
+      },
+      {
+        "name": "amount_paise",
+        "postgres_definition": "bigint NOT NULL CHECK (amount_paise > 0)"
+      },
+      {
+        "name": "transaction_amount",
+        "postgres_definition": "numeric(14,2) NOT NULL"
+      },
+      {
+        "name": "payment_channel",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "merchant_category",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "transaction_time",
+        "postgres_definition": "timestamptz NOT NULL"
+      },
+      {
+        "name": "customer_age",
+        "postgres_definition": "integer NOT NULL"
+      },
+      {
+        "name": "customer_location",
+        "postgres_definition": "jsonb"
+      },
+      {
+        "name": "merchant_location",
+        "postgres_definition": "jsonb NOT NULL"
+      },
+      {
+        "name": "account_age",
+        "postgres_definition": "integer NOT NULL"
+      },
+      {
+        "name": "previous_transactions",
+        "postgres_definition": "integer NOT NULL"
+      },
+      {
+        "name": "average_transaction_value",
+        "postgres_definition": "numeric(14,2)"
+      },
+      {
+        "name": "failed_transactions",
+        "postgres_definition": "integer NOT NULL"
+      },
+      {
+        "name": "split",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": [
+      [
+        "customer_id",
+        "customers",
+        "customer_id"
+      ],
+      [
+        "merchant_id",
+        "merchants",
+        "merchant_id"
+      ],
+      [
+        "device_id",
+        "devices",
+        "device_id"
+      ]
+    ]
+  },
+  "payment_outcomes": {
+    "columns": [
+      {
+        "name": "transaction_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "outcome_time",
+        "postgres_definition": "timestamptz NOT NULL"
+      },
+      {
+        "name": "status",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "failure_code",
+        "postgres_definition": "text"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": [
+      [
+        "transaction_id",
+        "transactions",
+        "transaction_id"
+      ]
+    ]
+  },
+  "labels": {
+    "columns": [
+      {
+        "name": "transaction_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "fraud_label",
+        "postgres_definition": "smallint NOT NULL CHECK (fraud_label IN (0,1))"
+      },
+      {
+        "name": "label_source",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "label_available_at",
+        "postgres_definition": "timestamptz NOT NULL"
+      },
+      {
+        "name": "split",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "eligible_at_next_split_start",
+        "postgres_definition": "boolean NOT NULL"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": [
+      [
+        "transaction_id",
+        "transactions",
+        "transaction_id"
+      ]
+    ]
+  },
+  "features": {
+    "columns": [
+      {
+        "name": "transaction_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "feature_as_of",
+        "postgres_definition": "timestamptz NOT NULL"
+      },
+      {
+        "name": "amount_to_avg_ratio",
+        "postgres_definition": "double precision"
+      },
+      {
+        "name": "is_new_device",
+        "postgres_definition": "boolean"
+      },
+      {
+        "name": "customer_merchant_distance_km",
+        "postgres_definition": "double precision"
+      },
+      {
+        "name": "is_new_city",
+        "postgres_definition": "boolean"
+      },
+      {
+        "name": "hour_of_day",
+        "postgres_definition": "integer NOT NULL"
+      },
+      {
+        "name": "is_night",
+        "postgres_definition": "boolean NOT NULL"
+      },
+      {
+        "name": "has_recent_failures",
+        "postgres_definition": "boolean NOT NULL"
+      },
+      {
+        "name": "is_new_account",
+        "postgres_definition": "boolean NOT NULL"
+      },
+      {
+        "name": "txn_count_last_1h",
+        "postgres_definition": "integer NOT NULL"
+      },
+      {
+        "name": "txn_amount_last_24h_paise",
+        "postgres_definition": "bigint NOT NULL"
+      },
+      {
+        "name": "distinct_customers_per_device_7d",
+        "postgres_definition": "integer"
+      },
+      {
+        "name": "combined_risk_flags",
+        "postgres_definition": "integer NOT NULL"
+      },
+      {
+        "name": "mcc_target_encoded_rate",
+        "postgres_definition": "double precision NOT NULL"
+      },
+      {
+        "name": "mcc_encoding_as_of",
+        "postgres_definition": "timestamptz NOT NULL"
+      },
+      {
+        "name": "mcc_encoding_count",
+        "postgres_definition": "integer NOT NULL"
+      },
+      {
+        "name": "missing_customer_location",
+        "postgres_definition": "boolean NOT NULL"
+      },
+      {
+        "name": "missing_device",
+        "postgres_definition": "boolean NOT NULL"
+      },
+      {
+        "name": "cold_start",
+        "postgres_definition": "boolean NOT NULL"
+      },
+      {
+        "name": "reason_codes",
+        "postgres_definition": "jsonb NOT NULL"
+      },
+      {
+        "name": "feature_version",
+        "postgres_definition": "text NOT NULL"
+      }
+    ],
+    "foreign_keys": [
+      [
+        "transaction_id",
+        "transactions",
+        "transaction_id"
+      ]
+    ]
+  },
+  "legacy_cases": {
+    "columns": [
+      {
+        "name": "legacy_case_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "customer_id",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "transaction_time",
+        "postgres_definition": "timestamptz NOT NULL"
+      },
+      {
+        "name": "closed_at",
+        "postgres_definition": "timestamptz NOT NULL"
+      },
+      {
+        "name": "amount_paise",
+        "postgres_definition": "bigint NOT NULL"
+      },
+      {
+        "name": "payment_channel",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "fraud_label",
+        "postgres_definition": "smallint NOT NULL"
+      },
+      {
+        "name": "evidence",
+        "postgres_definition": "jsonb NOT NULL"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": [
+      [
+        "customer_id",
+        "customers",
+        "customer_id"
+      ]
+    ]
+  },
+  "documents": {
+    "columns": [
+      {
+        "name": "document_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "kind",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "title",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "transaction_id",
+        "postgres_definition": "text"
+      },
+      {
+        "name": "legacy_case_id",
+        "postgres_definition": "text"
+      },
+      {
+        "name": "split",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "published_at",
+        "postgres_definition": "timestamptz NOT NULL"
+      },
+      {
+        "name": "content",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "content_sha256",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "template_family",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "cpt_eligible",
+        "postgres_definition": "boolean NOT NULL"
+      },
+      {
+        "name": "review_status",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "storage_path",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "record_in_shard",
+        "postgres_definition": "integer NOT NULL"
+      },
+      {
+        "name": "metadata",
+        "postgres_definition": "jsonb NOT NULL"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": [
+      [
+        "transaction_id",
+        "transactions",
+        "transaction_id"
+      ],
+      [
+        "legacy_case_id",
+        "legacy_cases",
+        "legacy_case_id"
+      ]
+    ]
+  },
+  "document_chunks": {
+    "columns": [
+      {
+        "name": "chunk_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "document_id",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "chunk_index",
+        "postgres_definition": "integer NOT NULL"
+      },
+      {
+        "name": "content",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "word_count",
+        "postgres_definition": "integer NOT NULL"
+      },
+      {
+        "name": "split",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "cpt_eligible",
+        "postgres_definition": "boolean NOT NULL"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": [
+      [
+        "document_id",
+        "documents",
+        "document_id"
+      ]
+    ]
+  },
+  "gold_explanations": {
+    "columns": [
+      {
+        "name": "example_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "transaction_id",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "split",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "prompt",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "target",
+        "postgres_definition": "jsonb NOT NULL"
+      },
+      {
+        "name": "fraud_label",
+        "postgres_definition": "smallint NOT NULL"
+      },
+      {
+        "name": "review_status",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": [
+      [
+        "transaction_id",
+        "transactions",
+        "transaction_id"
+      ]
+    ]
+  },
+  "preference_pairs": {
+    "columns": [
+      {
+        "name": "pair_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "transaction_id",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "split",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "prompt",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "chosen",
+        "postgres_definition": "jsonb NOT NULL"
+      },
+      {
+        "name": "rejected",
+        "postgres_definition": "jsonb NOT NULL"
+      },
+      {
+        "name": "rejection_reason",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "review_status",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": [
+      [
+        "transaction_id",
+        "transactions",
+        "transaction_id"
+      ]
+    ]
+  },
+  "decision_audit": {
+    "columns": [
+      {
+        "name": "transaction_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "scored_at",
+        "postgres_definition": "timestamptz NOT NULL"
+      },
+      {
+        "name": "fraud_probability",
+        "postgres_definition": "numeric(7,6) NOT NULL"
+      },
+      {
+        "name": "decision",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "risk_level",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "reason_codes",
+        "postgres_definition": "jsonb NOT NULL"
+      },
+      {
+        "name": "explanation",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "decision_source",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "model_version",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "rules_version",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "latency_ms",
+        "postgres_definition": "integer NOT NULL"
+      },
+      {
+        "name": "explanation_latency_ms",
+        "postgres_definition": "integer NOT NULL"
+      },
+      {
+        "name": "prompt_format",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "prompt_hash",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "request",
+        "postgres_definition": "jsonb NOT NULL"
+      },
+      {
+        "name": "feature_vector",
+        "postgres_definition": "jsonb NOT NULL"
+      },
+      {
+        "name": "split",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": [
+      [
+        "transaction_id",
+        "transactions",
+        "transaction_id"
+      ]
+    ]
+  },
+  "threshold_sets": {
+    "columns": [
+      {
+        "name": "threshold_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "version",
+        "postgres_definition": "integer NOT NULL"
+      },
+      {
+        "name": "mcc_group",
+        "postgres_definition": "text"
+      },
+      {
+        "name": "medium_from",
+        "postgres_definition": "numeric(4,3) NOT NULL"
+      },
+      {
+        "name": "high_from",
+        "postgres_definition": "numeric(4,3) NOT NULL"
+      },
+      {
+        "name": "critical_from",
+        "postgres_definition": "numeric(4,3) NOT NULL"
+      },
+      {
+        "name": "status",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": []
+  },
+  "hard_rules": {
+    "columns": [
+      {
+        "name": "rule_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "code",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "expression",
+        "postgres_definition": "jsonb NOT NULL"
+      },
+      {
+        "name": "action",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "priority",
+        "postgres_definition": "integer NOT NULL"
+      },
+      {
+        "name": "enabled",
+        "postgres_definition": "boolean NOT NULL"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": []
+  },
+  "list_entries": {
+    "columns": [
+      {
+        "name": "entry_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "list_type",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "entity_id",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "effective_from",
+        "postgres_definition": "timestamptz NOT NULL"
+      },
+      {
+        "name": "reason",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": []
+  },
+  "config_changes": {
+    "columns": [
+      {
+        "name": "change_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "entity",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "entity_id",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "before_value",
+        "postgres_definition": "jsonb"
+      },
+      {
+        "name": "after_value",
+        "postgres_definition": "jsonb NOT NULL"
+      },
+      {
+        "name": "changed_by",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "changed_at",
+        "postgres_definition": "timestamptz NOT NULL"
+      },
+      {
+        "name": "reason",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": []
+  },
+  "reviewer_feedback": {
+    "columns": [
+      {
+        "name": "feedback_id",
+        "postgres_definition": "text PRIMARY KEY"
+      },
+      {
+        "name": "transaction_id",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "reviewed_at",
+        "postgres_definition": "timestamptz NOT NULL"
+      },
+      {
+        "name": "verdict",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "corrected_explanation",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "reviewer_id",
+        "postgres_definition": "text NOT NULL"
+      },
+      {
+        "name": "is_synthetic",
+        "postgres_definition": "boolean NOT NULL"
+      }
+    ],
+    "foreign_keys": [
+      [
+        "transaction_id",
+        "transactions",
+        "transaction_id"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "generator_version": "1.0.0",
+  "configured_counts": {
+    "transactions": 100000,
+    "warmup": 10000,
+    "customers": 2500,
+    "merchants": 200,
+    "investigator_notes": 2584,
+    "chargeback_narratives": 1167,
+    "playbooks": 600,
+    "regulatory_exercises": 900,
+    "gold": 8000,
+    "dpo": 5000,
+    "evaluation": 500,
+    "legacy_cases": 200
+  },
+  "observed": {
+    "main_transactions": 100000,
+    "warmup_transactions": 10000,
+    "fraud": 600,
+    "missing_customer_location": 2984,
+    "missing_device": 953,
+    "amount_above_10_lakh": 37,
+    "max_history_length": 20,
+    "max_prompt_tokens": 0,
+    "max_prompt_estimated_tokens": 409,
+    "history_truncations": 0,
+    "splits": {
+      "train": {
+        "rows": 72050,
+        "fraud": 438,
+        "mature_by_next_split": 57785
+      },
+      "validation": {
+        "rows": 14061,
+        "fraud": 89,
+        "mature_by_next_split": 234
+      },
+      "holdout": {
+        "rows": 13889,
+        "fraud": 73,
+        "mature_by_next_split": 13889
+      }
+    },
+    "channels": {
+      "UPI": 57983,
+      "net_banking": 4185,
+      "card": 31072,
+      "wallet": 6760
+    },
+    "decisions": {
+      "ALLOW": 98125,
+      "REVIEW": 1218,
+      "BLOCK": 657
+    },
+    "night": 13956,
+    "failure_context_ge3": 8954,
+    "velocity_ge4": 13120
+  },
+  "main_fraud_rate": 0.006,
+  "missing_location_rate": 0.02984,
+  "document_counts": {
+    "playbooks": 600,
+    "regulatory_exercises": 900,
+    "rba_guides": 1,
+    "guidelines": 4,
+    "investigator_notes": 2584,
+    "chargeback_narratives": 1167
+  },
+  "word_counts_by_corpus": {
+    "playbooks": 162330,
+    "regulatory_exercises": 244395,
+    "rba_guides": 104,
+    "guidelines": 384,
+    "investigator_notes": 649938,
+    "chargeback_narratives": 294872
+  },
+  "estimated_tokens_by_corpus": {
+    "playbooks": 227262,
+    "regulatory_exercises": 342153,
+    "rba_guides": 146,
+    "guidelines": 538,
+    "investigator_notes": 909914,
+    "chargeback_narratives": 412821
+  },
+  "cpt_word_count_after_exact_dedup": 1052706,
+  "cpt_estimated_tokens": 1473789,
+  "exact_duplicate_documents": 0,
+  "normalized_template_fingerprints": 4731,
+  "late_training_documents_excluded_from_cpt": 413,
+  "semantic_dedup_status": "not_certified",
+  "prompt_token_status": "estimated_not_tokenizer_verified",
+  "pii_pattern_audit": {
+    "sample_size": 1000,
+    "population": 5256,
+    "pattern_hits": [],
+    "human_audit_performed": false,
+    "limitations": "Pattern checks do not detect all names, addresses, spaced identifiers or arbitrary PII. All prose here is generated from controlled synthetic templates."
+  },
+  "synthetic": true,
+  "human_reviewed": false
+}
