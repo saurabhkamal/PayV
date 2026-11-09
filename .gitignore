@@ -22,3 +22,5 @@ Neo4j-*.txt
 
 # Private notes (not for GitHub)
 mongo/script.md
+graph/script.md
+
