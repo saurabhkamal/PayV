@@ -4,3 +4,5 @@ python-dotenv==1.2.4
 # Only needed if you set DATABASE_URL (lets the script run the SQL files for you)
 psycopg[binary]==3.3.6
 pymongo
+neo4j
+certifi

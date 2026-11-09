@@ -16,3 +16,9 @@ __pycache__/
 .idea/
 .DS_Store
 Thumbs.db
+
+# neo4j
+Neo4j-*.txt
+
+# Private notes (not for GitHub)
+mongo/script.md
