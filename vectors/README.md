@@ -26,7 +26,7 @@ Searching (every question)
 | Component | Choice |
 |---|---|
 | Vector database | **Qdrant Cloud** (free tier), collection `payv_corpus` |
-| Embedding model | **Gemini Embedding 2** (`gemini-embedding-2-preview`), 3,072 dimensions, through the Euron **EURI** gateway |
+| Embedding model | **Gemini Embedding 2** (`gemini-embedding-2-preview`), 3,072 dimensions, through the **EURI** gateway |
 | Chunking | LangChain `RecursiveCharacterTextSplitter`, 800 characters with 150 overlap |
 | Similarity | Cosine |
 
@@ -53,7 +53,7 @@ Searching (every question)
 - Python 3.11 or newer
 - The corpus in `data/corpus/` (part of this repository)
 - A **Qdrant Cloud** account (the free tier is enough)
-- A **Euron EURI** API key, used for Gemini Embedding 2
+- A **EURI** API key, used for Gemini Embedding 2
 
 ### 1. Create the Qdrant cluster
 
@@ -64,7 +64,7 @@ Searching (every question)
 
 ### 2. Get the EURI API key
 
-1. Sign in to the Euron EURI dashboard and create an API key.
+1. Sign in to the EURI dashboard and create an API key.
 2. Check the exact model name for Gemini Embedding 2 in its model list. This project uses `gemini-embedding-2-preview`, set as `MODEL` in [embed.py](embed.py).
 
 ### 3. Create the environment and install the packages
