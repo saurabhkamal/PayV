@@ -23,6 +23,10 @@ Neo4j-*.txt
 # Private notes (not for GitHub)
 mongo/script.md
 graph/script.md
+Project_Client_Requirement_Document.docx
+
+# Local data cache for the feature pipeline
+pipeline/cache/
 
 vectors/cache/
 
