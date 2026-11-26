@@ -24,3 +24,6 @@ Neo4j-*.txt
 mongo/script.md
 graph/script.md
 
+vectors/cache/
+
+vector_internals/cache/
