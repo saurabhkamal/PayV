@@ -1,0 +1,256 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="880" viewBox="0 0 1500 880" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748B"/>
+    </marker>
+    <marker id="arrowIndigo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4F46E5"/>
+    </marker>
+    <marker id="arrowGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#A8B3C4"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <rect width="1500" height="880" fill="#F8FAFC"/>
+
+  <!-- title -->
+  <text x="40" y="52" font-size="28" font-weight="700" fill="#0F172A">PayV data pipeline</text>
+  <text x="40" y="80" font-size="15" fill="#475569">From raw files to fraud answers: Supabase is the source, MongoDB is the first target, more databases can plug in later.</text>
+
+  <!-- ============ ROW 1 ============ -->
+
+  <!-- A. Raw data files -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="150" width="200" height="250" rx="14" fill="#FFFFFF" stroke="#CBD5E1"/>
+  </g>
+  <rect x="40" y="150" width="200" height="8" rx="4" fill="#64748B"/>
+  <text x="58" y="186" font-size="11" font-weight="700" fill="#64748B" letter-spacing="1.2">SOURCE FILES</text>
+  <text x="58" y="212" font-size="19" font-weight="700" fill="#0F172A">Raw data files</text>
+  <text x="58" y="234" font-size="13" fill="#475569">the data/ folder</text>
+  <g font-size="13" fill="#334155">
+    <text x="58" y="270">• 14 tables as CSV</text>
+    <text x="58" y="294">• manifest.json with</text>
+    <text x="70" y="312">expected row counts</text>
+    <text x="58" y="336">• all data is synthetic</text>
+  </g>
+
+  <!-- A -> B -->
+  <line x1="242" y1="275" x2="296" y2="275" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="269" y="262" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">ingest.py</text>
+  <text x="269" y="295" font-size="11" fill="#64748B" text-anchor="middle">load once</text>
+
+  <!-- B. Supabase -->
+  <g filter="url(#shadow)">
+    <rect x="300" y="150" width="240" height="250" rx="14" fill="#FFFFFF" stroke="#99E2D0"/>
+  </g>
+  <rect x="300" y="150" width="240" height="8" rx="4" fill="#0F9D8A"/>
+  <!-- cylinder icon -->
+  <g transform="translate(494,174)">
+    <path d="M0,6 v22 a14,6 0 0 0 28,0 v-22" fill="#E6F7F3" stroke="#0F9D8A" stroke-width="1.6"/>
+    <ellipse cx="14" cy="6" rx="14" ry="6" fill="#E6F7F3" stroke="#0F9D8A" stroke-width="1.6"/>
+    <path d="M0,17 a14,6 0 0 0 28,0" fill="none" stroke="#0F9D8A" stroke-width="1.2"/>
+  </g>
+  <text x="318" y="186" font-size="11" font-weight="700" fill="#0F9D8A" letter-spacing="1.2">SOURCE DATABASE</text>
+  <text x="318" y="212" font-size="19" font-weight="700" fill="#0F172A">Supabase</text>
+  <text x="318" y="234" font-size="13" fill="#475569">PostgreSQL · rows in tables</text>
+  <g font-size="13" fill="#334155">
+    <text x="318" y="268">customers</text><text x="522" y="268" text-anchor="end" font-weight="600">2,500</text>
+    <text x="318" y="290">merchants</text><text x="522" y="290" text-anchor="end" font-weight="600">200</text>
+    <text x="318" y="312">devices</text><text x="522" y="312" text-anchor="end" font-weight="600">10,120</text>
+    <text x="318" y="334">transactions</text><text x="522" y="334" text-anchor="end" font-weight="600">110,000</text>
+    <text x="318" y="356">labels (fraud 0/1)</text><text x="522" y="356" text-anchor="end" font-weight="600">110,000</text>
+    <text x="318" y="380" fill="#64748B">+ 9 more tables</text>
+  </g>
+
+  <!-- B -> ETL -->
+  <line x1="542" y1="275" x2="596" y2="275" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="569" y="262" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">read</text>
+
+  <!-- ETL container -->
+  <rect x="600" y="118" width="560" height="312" rx="18" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6" stroke-dasharray="7 5"/>
+  <rect x="620" y="104" width="300" height="28" rx="14" fill="#4F46E5"/>
+  <text x="770" y="123" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">STEP 3 · load.py · ETL pipeline</text>
+
+  <!-- E -->
+  <g filter="url(#shadow)">
+    <rect x="620" y="160" width="160" height="240" rx="12" fill="#FFFFFF" stroke="#C7D2FE"/>
+  </g>
+  <circle cx="650" cy="192" r="17" fill="#4F46E5"/>
+  <text x="650" y="199" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">E</text>
+  <text x="676" y="198" font-size="17" font-weight="700" fill="#0F172A">Extract</text>
+  <text x="636" y="230" font-size="12" fill="#4F46E5" font-weight="600">read from Supabase</text>
+  <g font-size="13" fill="#334155">
+    <text x="636" y="262">• 150 customers</text>
+    <text x="636" y="286">• all their payments</text>
+    <text x="636" y="310">• 1,000 rows per page</text>
+    <text x="636" y="334">• merchant, device</text>
+    <text x="648" y="352">and fraud label</text>
+    <text x="648" y="370">joined in</text>
+  </g>
+
+  <line x1="782" y1="280" x2="798" y2="280" stroke="#4F46E5" stroke-width="2.5" marker-end="url(#arrowIndigo)"/>
+
+  <!-- T -->
+  <g filter="url(#shadow)">
+    <rect x="800" y="160" width="170" height="240" rx="12" fill="#FFFFFF" stroke="#C7D2FE"/>
+  </g>
+  <circle cx="830" cy="192" r="17" fill="#4F46E5"/>
+  <text x="830" y="199" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">T</text>
+  <text x="856" y="198" font-size="17" font-weight="700" fill="#0F172A">Transform</text>
+  <text x="816" y="230" font-size="12" fill="#4F46E5" font-weight="600">reshape in Python</text>
+  <g font-size="13" fill="#334155">
+    <text x="816" y="262">• rows → documents</text>
+    <text x="816" y="286">• text → real dates</text>
+    <text x="816" y="310">• copy merchant and</text>
+    <text x="828" y="328">device details in</text>
+    <text x="816" y="352">• build each customer’s</text>
+    <text x="828" y="370">device list</text>
+  </g>
+
+  <line x1="972" y1="280" x2="988" y2="280" stroke="#4F46E5" stroke-width="2.5" marker-end="url(#arrowIndigo)"/>
+
+  <!-- L -->
+  <g filter="url(#shadow)">
+    <rect x="990" y="160" width="150" height="240" rx="12" fill="#FFFFFF" stroke="#C7D2FE"/>
+  </g>
+  <circle cx="1020" cy="192" r="17" fill="#4F46E5"/>
+  <text x="1020" y="199" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">L</text>
+  <text x="1046" y="198" font-size="17" font-weight="700" fill="#0F172A">Load</text>
+  <text x="1006" y="230" font-size="12" fill="#4F46E5" font-weight="600">write to MongoDB</text>
+  <g font-size="13" fill="#334155">
+    <text x="1006" y="262">• drop old</text>
+    <text x="1018" y="280">collections</text>
+    <text x="1006" y="304">• insert_many</text>
+    <text x="1006" y="328">• same clean</text>
+    <text x="1018" y="346">result every run</text>
+  </g>
+
+  <!-- ETL -> MongoDB -->
+  <line x1="1162" y1="275" x2="1206" y2="275" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="1184" y="262" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">write</text>
+
+  <!-- C. MongoDB -->
+  <g filter="url(#shadow)">
+    <rect x="1210" y="150" width="250" height="250" rx="14" fill="#FFFFFF" stroke="#A7DFBC"/>
+  </g>
+  <rect x="1210" y="150" width="250" height="8" rx="4" fill="#13AA52"/>
+  <g transform="translate(1414,174)">
+    <path d="M0,6 v22 a14,6 0 0 0 28,0 v-22" fill="#E8F7EE" stroke="#13AA52" stroke-width="1.6"/>
+    <ellipse cx="14" cy="6" rx="14" ry="6" fill="#E8F7EE" stroke="#13AA52" stroke-width="1.6"/>
+    <path d="M0,17 a14,6 0 0 0 28,0" fill="none" stroke="#13AA52" stroke-width="1.2"/>
+  </g>
+  <text x="1228" y="186" font-size="11" font-weight="700" fill="#13AA52" letter-spacing="1.2">TARGET DATABASE</text>
+  <text x="1228" y="212" font-size="19" font-weight="700" fill="#0F172A">MongoDB Atlas</text>
+  <text x="1228" y="234" font-size="13" fill="#475569">database payv · documents</text>
+  <!-- customers mini box -->
+  <rect x="1226" y="248" width="218" height="56" rx="9" fill="#F0FAF4" stroke="#C6EBD3"/>
+  <text x="1238" y="270" font-size="13" font-weight="700" fill="#0F172A">customers</text>
+  <text x="1432" y="270" font-size="13" font-weight="700" fill="#13AA52" text-anchor="end">150</text>
+  <text x="1238" y="292" font-size="12" fill="#475569">devices embedded inside</text>
+  <!-- transactions mini box -->
+  <rect x="1226" y="312" width="218" height="56" rx="9" fill="#F0FAF4" stroke="#C6EBD3"/>
+  <text x="1238" y="334" font-size="13" font-weight="700" fill="#0F172A">transactions</text>
+  <text x="1432" y="334" font-size="13" font-weight="700" fill="#13AA52" text-anchor="end">6,788</text>
+  <text x="1238" y="356" font-size="12" fill="#475569">refers to customer_id · 40 fraud</text>
+  <!-- step badges -->
+  <rect x="1226" y="376" width="100" height="18" rx="9" fill="#13AA52"/>
+  <text x="1276" y="389" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">STEP 1 · connect</text>
+  <rect x="1334" y="376" width="110" height="18" rx="9" fill="#13AA52"/>
+  <text x="1389" y="389" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">STEP 2 · design</text>
+
+  <!-- ============ ROW 2 ============ -->
+
+  <!-- MongoDB -> Use -->
+  <line x1="1335" y1="402" x2="1335" y2="514" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="1347" y="466" font-size="12" font-weight="700" fill="#334155">query</text>
+
+  <!-- Use container -->
+  <rect x="600" y="520" width="860" height="270" rx="18" fill="#FFF7ED" stroke="#D97706" stroke-width="1.6" stroke-dasharray="7 5"/>
+  <rect x="620" y="506" width="330" height="28" rx="14" fill="#D97706"/>
+  <text x="785" y="525" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">USE THE DATA · Python scripts + Atlas UI</text>
+
+  <!-- Step 4 -->
+  <g filter="url(#shadow)">
+    <rect x="620" y="560" width="270" height="210" rx="12" fill="#FFFFFF" stroke="#FCD9A8"/>
+  </g>
+  <text x="638" y="590" font-size="11" font-weight="700" fill="#D97706" letter-spacing="1.2">STEP 4 · crud.py</text>
+  <text x="638" y="616" font-size="18" font-weight="700" fill="#0F172A">Basic operations</text>
+  <g font-size="13" fill="#334155">
+    <text x="638" y="646">• create, read, update, delete</text>
+    <text x="638" y="670">• on test records only</text>
+  </g>
+  <rect x="636" y="700" width="238" height="52" rx="9" fill="#ECFDF3"/>
+  <text x="650" y="722" font-size="12" font-weight="700" fill="#047857">RESULT</text>
+  <text x="650" y="741" font-size="13" fill="#065F46">Real data untouched: 6,788</text>
+
+  <!-- Step 5 -->
+  <g filter="url(#shadow)">
+    <rect x="900" y="560" width="270" height="210" rx="12" fill="#FFFFFF" stroke="#FCD9A8"/>
+  </g>
+  <text x="918" y="590" font-size="11" font-weight="700" fill="#D97706" letter-spacing="1.2">STEP 5 · indexes.py</text>
+  <text x="918" y="616" font-size="18" font-weight="700" fill="#0F172A">Indexes for speed</text>
+  <g font-size="13" fill="#334155">
+    <text x="918" y="646">• customer_id + transaction time</text>
+    <text x="918" y="670">• explain() before and after</text>
+  </g>
+  <rect x="916" y="700" width="238" height="52" rx="9" fill="#ECFDF3"/>
+  <text x="930" y="722" font-size="12" font-weight="700" fill="#047857">RESULT</text>
+  <text x="930" y="741" font-size="13" fill="#065F46">Docs read: 6,788 → 48</text>
+
+  <!-- Step 6 -->
+  <g filter="url(#shadow)">
+    <rect x="1180" y="560" width="270" height="210" rx="12" fill="#FFFFFF" stroke="#FCD9A8"/>
+  </g>
+  <text x="1198" y="590" font-size="11" font-weight="700" fill="#D97706" letter-spacing="1.2">STEP 6 · aggregations.py</text>
+  <text x="1198" y="616" font-size="18" font-weight="700" fill="#0F172A">Business answers</text>
+  <g font-size="13" fill="#334155">
+    <text x="1198" y="646">• fraud rate per category</text>
+    <text x="1198" y="670">• top 10 customers, last 24 h</text>
+  </g>
+  <rect x="1196" y="700" width="238" height="52" rx="9" fill="#ECFDF3"/>
+  <text x="1210" y="722" font-size="12" font-weight="700" fill="#047857">RESULT</text>
+  <text x="1210" y="741" font-size="13" fill="#065F46">All 40 frauds in 3 categories</text>
+
+  <!-- Future targets -->
+  <path d="M420,402 V460 H290 V514" fill="none" stroke="#A8B3C4" stroke-width="2.2" stroke-dasharray="6 5" marker-end="url(#arrowGray)"/>
+  <text x="430" y="452" font-size="12" font-weight="700" fill="#64748B">later</text>
+
+  <rect x="40" y="520" width="500" height="270" rx="18" fill="#FFFFFF" stroke="#A8B3C4" stroke-width="1.6" stroke-dasharray="7 5"/>
+  <rect x="60" y="506" width="250" height="28" rx="14" fill="#94A3B8"/>
+  <text x="185" y="525" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">FUTURE · more target databases</text>
+  <text x="62" y="572" font-size="15" font-weight="600" fill="#0F172A">Each new database repeats the same pattern:</text>
+  <!-- pattern chips -->
+  <rect x="62" y="590" width="110" height="34" rx="17" fill="#EEF2FF" stroke="#C7D2FE"/>
+  <text x="117" y="612" font-size="13" font-weight="700" fill="#4F46E5" text-anchor="middle">Extract</text>
+  <text x="187" y="613" font-size="16" fill="#64748B" text-anchor="middle">→</text>
+  <rect x="202" y="590" width="130" height="34" rx="17" fill="#EEF2FF" stroke="#C7D2FE"/>
+  <text x="267" y="612" font-size="13" font-weight="700" fill="#4F46E5" text-anchor="middle">Transform</text>
+  <text x="347" y="613" font-size="16" fill="#64748B" text-anchor="middle">→</text>
+  <rect x="362" y="590" width="100" height="34" rx="17" fill="#EEF2FF" stroke="#C7D2FE"/>
+  <text x="412" y="612" font-size="13" font-weight="700" fill="#4F46E5" text-anchor="middle">Load</text>
+  <text x="62" y="652" font-size="13" fill="#475569">Same source (Supabase). Only the shape and the target change.</text>
+  <!-- placeholder target slots -->
+  <g font-size="13" font-weight="600" fill="#64748B" text-anchor="middle">
+    <rect x="62" y="676" width="140" height="70" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-dasharray="5 4"/>
+    <text x="132" y="707">Graph DB</text>
+    <text x="132" y="727" font-size="11" font-weight="400">relationships</text>
+    <rect x="216" y="676" width="140" height="70" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-dasharray="5 4"/>
+    <text x="286" y="707">Vector DB</text>
+    <text x="286" y="727" font-size="11" font-weight="400">meaning search</text>
+    <rect x="370" y="676" width="150" height="70" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-dasharray="5 4"/>
+    <text x="445" y="715" font-size="22">+</text>
+  </g>
+
+  <!-- ============ FOOTER ============ -->
+  <rect x="40" y="816" width="1420" height="44" rx="12" fill="#0F172A"/>
+  <!-- lock icon -->
+  <g transform="translate(62,826)" fill="none" stroke="#FBBF24" stroke-width="2">
+    <rect x="0" y="10" width="18" height="14" rx="3" fill="#FBBF24"/>
+    <path d="M4,10 V6 a5,5 0 0 1 10,0 V10"/>
+  </g>
+  <text x="94" y="844" font-size="14" fill="#E2E8F0"><tspan font-weight="700" fill="#FFFFFF">.env</tspan> holds every key and connection string. The scripts read it; it is never written in code and never pushed to GitHub.</text>
+</svg>
