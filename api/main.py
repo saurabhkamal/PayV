@@ -1,7 +1,9 @@
 """Part 1: the API skeleton. POST /explain returns a placeholder answer in the final format."""
 
 from typing import Literal                  # Literal limits a field to a fixed set of allowed values
-from fastapi import FastAPI                 # FastAPI builds the web service and its endpoints
+from fastapi import FastAPI, HTTPException  # FastAPI builds the web service and its endpoints
+                                            # HTTPException sends an error reply
+from api.context import build_context       # Part 2: collects data from the three databases
 from pydantic import BaseModel              # BaseModel describes the shape of the JSON going in and out
 
 # ---------- what the caller sends ----------
@@ -41,3 +43,11 @@ def explain(request: ExplainRequest) -> ExplainResponse:
         sources=[],                             # no policy chunks retrieved yet
     )
 
+@app.post("/context")                # POST /context: shows the raw context (for testing Part 2)
+def context(request: ExplainRequest) -> dict:     # Checks that the request contains a transaction_id
+    ctx = build_context(request.transaction_id)   # ask the three databases
+    if ctx is None:                               # the transaction ID does not exist
+        raise HTTPException(status_code=404, detail="Transaction not found")
+    return ctx                        # FastAPI turns the dict into JSON
+
+# ^^Adding a test endpoint to see what the three databases return before any LLM is involved.
