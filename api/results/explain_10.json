@@ -1,0 +1,234 @@
+{
+  "model": "gpt-6.1-sol",
+  "results": [
+    {
+      "transaction_id": "TX_0000095543",
+      "true_label": "fraud",
+      "response": {
+        "transaction_id": "TX_0000095543",
+        "risk_summary": "The \u20b924,697.12 UPI payment is 28.2969 times the customer's average, with odd-hour, recent-failure, velocity and high-risk merchant-category flags; these indicate unusual activity, not proof of fraud. The snapshot records four failed transactions and six transactions in the last hour, supporting concern about repeated attempts and rapid activity. The device is not new, and its graph neighbourhood shows one other customer with no recorded prior fraud, although the seven-day device feature reports only one distinct customer. Customer location is missing, so distance and new-city risk cannot be assessed. Review is warranted given the combined signals and the policy guidance that flags alone do not establish fraudulent intent.",
+        "reason_codes": [
+          "R03_ODD_HOUR",
+          "R04_FAILED_ATTEMPTS",
+          "R05_AMOUNT_SPIKE",
+          "R07_VELOCITY",
+          "R08_HIGH_RISK_MCC"
+        ],
+        "recommended_action": "review",
+        "sources": [
+          {
+            "document": "DOC_chargeback_narratives_0000595",
+            "chunk": 1
+          },
+          {
+            "document": "DOC_investigator_notes_0001194",
+            "chunk": 1
+          }
+        ]
+      }
+    },
+    {
+      "transaction_id": "TX_0000085604",
+      "true_label": "fraud",
+      "response": {
+        "transaction_id": "TX_0000085604",
+        "risk_summary": "The \u20b913,696.04 payment is 9.6977 times the customer's average, triggering an amount-spike signal, while the supplied features also flag odd-hour activity and recent failed attempts. Four transactions in the last hour triggered velocity concerns, and the electronics merchant category carries a high-risk MCC flag. The device and city are not new, but the device is absent from the graph, so the empty neighbourhood does not establish whether it is shared with other customers. These signals warrant review rather than automatic blocking because the supplied policy states that risk flags do not independently establish fraudulent intent.",
+        "reason_codes": [
+          "R03_ODD_HOUR",
+          "R04_FAILED_ATTEMPTS",
+          "R05_AMOUNT_SPIKE",
+          "R07_VELOCITY",
+          "R08_HIGH_RISK_MCC"
+        ],
+        "recommended_action": "review",
+        "sources": [
+          {
+            "document": "DOC_chargeback_narratives_0000595",
+            "chunk": 1
+          },
+          {
+            "document": "DOC_investigator_notes_0001194",
+            "chunk": 1
+          }
+        ]
+      }
+    },
+    {
+      "transaction_id": "TX_0000083044",
+      "true_label": "fraud",
+      "response": {
+        "transaction_id": "TX_0000083044",
+        "risk_summary": "The fired signals are geographic mismatch, odd-hour activity, recent failed attempts and high-risk merchant category: the customer-to-merchant distance is 1,453.82 km, the recorded local hour is 04:00, three failures are reported, and the merchant category is gaming. These signals warrant scrutiny but do not independently establish fraud; the amount is 1.9214 times the customer's average, and neither the account nor device is flagged as new. The device is absent from the graph and no shared-device links are returned, so neighbourhood evidence is unavailable rather than proof of no connections. Review is recommended to assess the combined signals without treating them as sufficient grounds to block.",
+        "reason_codes": [
+          "R02_GEO_MISMATCH",
+          "R03_ODD_HOUR",
+          "R04_FAILED_ATTEMPTS",
+          "R08_HIGH_RISK_MCC"
+        ],
+        "recommended_action": "review",
+        "sources": [
+          {
+            "document": "DOC_investigator_notes_0001647",
+            "chunk": 1
+          }
+        ]
+      }
+    },
+    {
+      "transaction_id": "TX_0000088240",
+      "true_label": "fraud",
+      "response": {
+        "transaction_id": "TX_0000088240",
+        "risk_summary": "The \u20b914,547.60 UPI payment is 14.26 times the customer's average, and the customer-to-merchant distance is 943.28 km, triggering amount-spike and geographic-mismatch signals. Odd-hour activity, four failed transactions, four transactions in the last hour, and the gaming merchant category also triggered risk signals, indicating unusual timing, repeated attempts, elevated activity, and category risk. The device is not new and has one distinct customer in the seven-day features, but it is absent from the graph, so the empty shared-device neighbourhood does not establish that there are no connections. These signals warrant review but do not independently establish fraud; graph-based device context is unavailable.",
+        "reason_codes": [
+          "R02_GEO_MISMATCH",
+          "R03_ODD_HOUR",
+          "R04_FAILED_ATTEMPTS",
+          "R05_AMOUNT_SPIKE",
+          "R07_VELOCITY",
+          "R08_HIGH_RISK_MCC"
+        ],
+        "recommended_action": "review",
+        "sources": [
+          {
+            "document": "DOC_investigator_notes_0000810",
+            "chunk": 1
+          },
+          {
+            "document": "DOC_investigator_notes_0001194",
+            "chunk": 1
+          },
+          {
+            "document": "DOC_chargeback_narratives_0000603",
+            "chunk": 1
+          }
+        ]
+      }
+    },
+    {
+      "transaction_id": "TX_0000087621",
+      "true_label": "fraud",
+      "response": {
+        "transaction_id": "TX_0000087621",
+        "risk_summary": "The \u20b942,152.18 UPI gaming payment triggered amount-spike, geographic-mismatch, odd-hour, failed-attempt, velocity and high-risk merchant-category flags. The amount is 16.758 times the customer's average, the customer-to-merchant distance is 515.88 km, and the features show an hour of 1, recent failures and five transactions in the last hour, indicating an unusual payment pattern. The account, device and city are not new, and the device feature reports one distinct customer over seven days; however, the device is absent from the graph, so the empty neighbourhood does not establish that it has no shared connections. These signals warrant review rather than automatic blocking because the supplied policy chunks state that risk flags do not independently establish intent.",
+        "reason_codes": [
+          "R02_GEO_MISMATCH",
+          "R03_ODD_HOUR",
+          "R04_FAILED_ATTEMPTS",
+          "R05_AMOUNT_SPIKE",
+          "R07_VELOCITY",
+          "R08_HIGH_RISK_MCC"
+        ],
+        "recommended_action": "review",
+        "sources": [
+          {
+            "document": "DOC_investigator_notes_0000810",
+            "chunk": 1
+          },
+          {
+            "document": "DOC_investigator_notes_0001194",
+            "chunk": 1
+          },
+          {
+            "document": "DOC_chargeback_narratives_0000603",
+            "chunk": 1
+          }
+        ]
+      }
+    },
+    {
+      "transaction_id": "TX_0000082707",
+      "true_label": "genuine",
+      "response": {
+        "transaction_id": "TX_0000082707",
+        "risk_summary": "No risk flags fired: the device, city and account are not marked new, and there are no recent failures or transactions in the last hour. The payment is 1.4076 times the recorded average, and the customer and merchant locations match, providing no distance-based concern. The device is absent from the graph and no shared-device links are listed, so its neighbourhood cannot be assessed reliably. No fraud probability is supplied to apply the policy's numerical cutoffs, but the available pre-authorisation signals do not support review or blocking.",
+        "reason_codes": [],
+        "recommended_action": "approve",
+        "sources": [
+          {
+            "document": "DOC_regulatory_exercises_0000389",
+            "chunk": 1
+          }
+        ]
+      }
+    },
+    {
+      "transaction_id": "TX_0000082165",
+      "true_label": "genuine",
+      "response": {
+        "transaction_id": "TX_0000082165",
+        "risk_summary": "The only fired signal is R02_GEO_MISMATCH: the customer in Jaipur is 920.08 km from the merchant in Mumbai, exceeding the 500 km distance described in the supplied notes. The amount is 1.1383 times the customer's average, with no new-device, new-city, recent-failure, new-account or night-time flags. The device is absent from the graph and no shared links are returned, so its neighbourhood cannot be assessed; the separate seven-day feature reports one customer per device. The supplied notes state that a risk flag does not independently establish intent and provide no explicit action threshold, so review is recommended rather than treating the distance flag as proof of fraud.",
+        "reason_codes": [
+          "R02_GEO_MISMATCH"
+        ],
+        "recommended_action": "review",
+        "sources": [
+          {
+            "document": "DOC_investigator_notes_0001992",
+            "chunk": 0
+          }
+        ]
+      }
+    },
+    {
+      "transaction_id": "TX_0000082076",
+      "true_label": "genuine",
+      "response": {
+        "transaction_id": "TX_0000082076",
+        "risk_summary": "The payment triggered R02_GEO_MISMATCH for a customer-to-merchant distance of 1371.88 km and R03_ODD_HOUR for the recorded hour of 02:00; these are contextual risk signals, not proof of fraud. The amount is below the customer's average, the account and device are not new, and there are no recent failures or elevated hourly transaction counts. The device is absent from the graph and no shared connections are listed, so the neighbourhood cannot establish whether it has suspicious links, although the seven-day feature reports one customer per device. No risk probability is supplied, so the policy's probability thresholds cannot be applied; review is recommended to assess the combined signals and the missing graph evidence rather than block on flags alone.",
+        "reason_codes": [
+          "R02_GEO_MISMATCH",
+          "R03_ODD_HOUR"
+        ],
+        "recommended_action": "review",
+        "sources": [
+          {
+            "document": "DOC_regulatory_exercises_0000389",
+            "chunk": 1
+          },
+          {
+            "document": "DOC_investigator_notes_0001549",
+            "chunk": 0
+          }
+        ]
+      }
+    },
+    {
+      "transaction_id": "TX_0000082812",
+      "true_label": "genuine",
+      "response": {
+        "transaction_id": "TX_0000082812",
+        "risk_summary": "R03_ODD_HOUR and R08_HIGH_RISK_MCC flag night-time activity and merchant-category risk, but neither establishes fraud. The payment is 1.8905 times the customer's average, with one transaction in the last hour and no recent-failure flag. The device and city are not new, and the customer-to-merchant distance is zero. The device is absent from the graph and no shared connections are listed, so its neighbourhood cannot be assessed, although the seven-day feature reports one customer using it. No fraud probability is provided to apply the policy's approval, review and block thresholds, so review is recommended to resolve this information gap rather than block on risk flags alone.",
+        "reason_codes": [
+          "R03_ODD_HOUR",
+          "R08_HIGH_RISK_MCC"
+        ],
+        "recommended_action": "review",
+        "sources": [
+          {
+            "document": "DOC_regulatory_exercises_0000389",
+            "chunk": 1
+          }
+        ]
+      }
+    },
+    {
+      "transaction_id": "TX_0000082333",
+      "true_label": "genuine",
+      "response": {
+        "transaction_id": "TX_0000082333",
+        "risk_summary": "The only triggered signal is R02_GEO_MISMATCH: the Jaipur customer and Bengaluru merchant are 1,561.36 km apart, exceeding the 500 km distance described in the supplied policy chunk. The amount is below the customer's average, and there are no new-device, new-account, nighttime, or recent-failure flags. The device is absent from the graph and no shared connections are listed, so its neighbourhood is unavailable rather than confirmed safe. The geographic mismatch warrants review, but the supplied guidance says a risk flag alone does not establish fraud.",
+        "reason_codes": [
+          "R02_GEO_MISMATCH"
+        ],
+        "recommended_action": "review",
+        "sources": [
+          {
+            "document": "DOC_investigator_notes_0001992",
+            "chunk": 0
+          }
+        ]
+      }
+    }
+  ]
+}
